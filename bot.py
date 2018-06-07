@@ -20,14 +20,16 @@ bot = commands.Bot(command_prefix=commands.when_mentioned_or('.m'),description="
 
 
 @bot.command()
-async def ping(ctx): """Ping command""" color = discord.Color(value=0x00ff00) em = discord.Embed(color=color, title='Pong!') em.description = f"{bot.latency * 1000:.4f} ms" await ctx.send(embed=em) 
-if not os.environ.get('TOKEN'): print("ERROR: Bot token not found.")bot.run(os.environ.get('TOKEN').strip('"'))
-
-
-
-
-
-
-
-
-
+async def ping(ctx):
+    """Get the bot's Websocket latency."""
+    color = discord.Color(value=0x00ff00)
+    em = discord.Embed(color=color, title='Pong!')
+    em.description = f"{bot.latency * 1000:.4f} ms"
+    await ctx.send(embed=em)
+    
+    
+    
+    
+if not os.environ.get('TOKEN'):
+    print("no token found REEEE!")
+bot.run(os.environ.get('TOKEN').strip('"'))
